@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance</title>
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+.sidebar-logo-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+.sidebar-logo{
+    width:220px !important;
+    height:90px !important;
+    object-fit:contain;
+    display:block;
+}
+
+.action-btn{
+    border:none;
+    background:#dc3545;
+    color:white;
+    padding:6px 10px;
+    border-radius:8px;
+    transition:0.2s;
+}
+
+.action-btn:hover{
+    opacity:0.85;
+}
+
+    </style>
+
+    <!-- Chart.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="sidebar-logo-container">
+
+             <img src="images/logo.png" class="sidebar-logo">
+
+        </div>
+
+        <a href="dashboard.html">
+            <i class="bi bi-grid-fill"></i>
+            Dashboard
+        </a>
+
+        <a href="subjects.html">
+            <i class="bi bi-book-fill"></i>
+            Subjects
+        </a>
+
+        <a href="assignments.html">
+            <i class="bi bi-file-earmark-text-fill"></i>
+            Assignments
+        </a>
+
+        <a href="attendance.html" class="active">
+            <i class="bi bi-bar-chart-fill"></i>
+            Attendance
+        </a>
+
+        <a href="profile.html">
+            <i class="bi bi-person-circle"></i>
+            Profile
+        </a>
+
+        <a href="index.html">
+            <i class="bi bi-box-arrow-left"></i>
+            Logout
+        </a>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar d-flex justify-content-between align-items-center shadow-sm">
+
+            <div>
+
+                <h4 class="fw-bold mb-0">
+                    Attendance Overview
+                </h4>
+
+                <small class="text-muted">
+                    Student attendance performance
+                </small>
+
+            </div>
+
+            <button class="dark-mode-toggle" id="darkModeToggle">
+                <i class="bi bi-moon-stars-fill" id="darkModeIcon"></i>
+            </button>
+
+        </div>
+
+        <!-- ROW -->
+
+        <div class="row g-4">
+
+            <!-- CHART -->
+
+            <div class="col-lg-5">
+
+                <div class="chart-card shadow-sm">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+
+                        <div>
+
+                            <h5 class="fw-bold mb-1">
+                                Attendance Percentage
+                            </h5>
+
+                            <small class="text-muted">
+                                Semester 2026
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <div style="max-width:300px; margin:auto;">
+
+                        <canvas id="attendanceChart"></canvas>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- ATTENDANCE FORM -->
+
+            <div class="col-lg-7">
+
+                <div class="table-card shadow-sm">
+
+                    <h5 class="fw-bold mb-4">
+                        Attendance Check
+                    </h5>
+
+                    <div class="row g-3">
+
+                        <!-- SUBJECT -->
+
+                        <div class="col-md-6">
+
+                            <label class="mb-2">
+                                Select Subject
+                            </label>
+
+                            <select class="form-select" id="subject">
+
+                                <option>IMS560 - Advance Database Management System</option>
+
+                                <option>IMS562 - Information Security</option>
+
+                                <option>IMS564 - User Experience Design</option>
+
+                                <option>IMS565 - Information Systems Project Management</option>
+
+                                <option>IMS566 - Advanced Web Design Development and Content Management</option>
+
+                                <option>LCC501 - English for Professional Correspondence</option>
+
+                                <option>TMC501 - Introductory Mandarin (III)</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- GROUP -->
+
+                        <div class="col-md-6">
+
+                            <label class="mb-2">
+                                Group
+                            </label>
+
+                            <select class="form-select" id="group">
+
+                                <option>CDIM2624ST1</option>
+
+                                <option>IMLCC501-07</option>
+
+                                <option>IMT3MA</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- ATTENDANCE DATE -->
+
+                        <div class="col-md-6">
+
+                            <label class="mb-2">
+                                Attendance Date
+                            </label>
+
+                            <input
+                                type="date"
+                                class="form-control"
+                                id="attendanceDate"
+                            >
+
+                        </div>
+
+                        <!-- STATUS -->
+
+                        <div class="col-md-6">
+
+                            <label class="mb-2">
+                                Attendance Status
+                            </label>
+
+                            <select class="form-select" id="status">
+
+                                <option>Present</option>
+
+                                <option>Absent</option>
+
+                                <option>MC</option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <!-- BUTTONS -->
+
+                    <div class="mt-4 d-flex gap-2 flex-wrap">
+
+                        <button
+                            class="btn btn-primary px-4"
+                            onclick="submitAttendance()"
+                        >
+
+                            <i class="bi bi-check-circle-fill me-2"></i>
+
+                            Submit Attendance
+
+                        </button>
+
+                        <button
+                            class="btn btn-danger px-4"
+                            onclick="clearAttendance()"
+                        >
+
+                            <i class="bi bi-trash-fill me-2"></i>
+
+                            Clear All
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ATTENDANCE HISTORY -->
+
+        <div class="table-card shadow-sm mt-4">
+
+            <!-- HEADER -->
+
+            <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-3">
+
+                <div>
+
+                    <h5 class="fw-bold mb-1">
+                        Attendance History
+                    </h5>
+
+                    <small class="text-muted">
+                        Recent attendance records
+                    </small>
+
+                </div>
+
+                <!-- FILTER -->
+
+                <div>
+
+                    <input
+                        type="date"
+                        class="form-control"
+                        id="filterDate"
+                        onchange="filterAttendance()"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- TABLE -->
+
+            <div class="table-responsive">
+
+                <table class="table align-middle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Date</th>
+
+                            <th>Subject</th>
+
+                            <th>Group</th>
+
+                            <th>Status</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="attendanceTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- BOOTSTRAP JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DARK MODE -->
+
+<script>
+
+    const darkModeToggle =
+        document.getElementById('darkModeToggle');
+
+    const darkModeIcon =
+        document.getElementById('darkModeIcon');
+
+    const body =
+        document.body;
+
+    const savedTheme =
+        localStorage.getItem('theme') || 'light';
+
+    body.setAttribute(
+        'data-bs-theme',
+        savedTheme
+    );
+
+    updateIcon(savedTheme);
+
+    darkModeToggle.addEventListener('click', () => {
+
+        const currentTheme =
+            body.getAttribute('data-bs-theme');
+
+        const newTheme =
+            currentTheme === 'dark'
+            ? 'light'
+            : 'dark';
+
+        body.setAttribute(
+            'data-bs-theme',
+            newTheme
+        );
+
+        localStorage.setItem(
+            'theme',
+            newTheme
+        );
+
+        updateIcon(newTheme);
+
+    });
+
+    function updateIcon(theme){
+
+        if(theme === 'dark'){
+
+            darkModeIcon.className =
+                'bi bi-sun-fill';
+
+        } else {
+
+            darkModeIcon.className =
+                'bi bi-moon-stars-fill';
+
+        }
+
+    }
+
+</script>
+
+    <!-- ATTENDANCE SYSTEM -->
+
+<script>
+
+        // =========================
+        // LOAD SAVED DATA
+        // =========================
+
+        let attendanceData =
+            JSON.parse(
+                localStorage.getItem('attendanceData')
+            ) || [];
+
+        // =========================
+        // CHART
+        // =========================
+
+        const ctx =
+            document.getElementById('attendanceChart');
+
+        const attendanceChart =
+            new Chart(ctx, {
+
+            type: 'doughnut',
+
+            data: {
+
+                labels: [
+
+                    'Present',
+                    'Absent',
+                    'MC'
+
+                ],
+
+                datasets: [{
+
+                    data: [0, 0, 0],
+
+                    borderWidth: 1
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                maintainAspectRatio: false
+
+            }
+
+        });
+
+        // =========================
+        // FORMAT DATE
+        // =========================
+
+        function formatDate(dateString){
+
+            const date = new Date(dateString);
+
+            const day =
+                String(date.getDate()).padStart(2, '0');
+
+            const month =
+                String(date.getMonth() + 1).padStart(2, '0');
+
+            const year =
+                String(date.getFullYear()).slice(-2);
+
+            return `${day}/${month}/${year}`;
+
+        }
+
+        // =========================
+        // UPDATE CHART
+        // =========================
+
+        function updateChart(data){
+
+            let present = 0;
+            let absent = 0;
+            let mc = 0;
+
+            data.forEach(item => {
+
+                if(item.status === 'Present'){
+
+                    present++;
+
+                } else if(item.status === 'Absent'){
+
+                    absent++;
+
+                } else {
+
+                    mc++;
+
+                }
+
+            });
+
+            attendanceChart.data.datasets[0].data = [
+
+                present,
+                absent,
+                mc
+
+            ];
+
+            attendanceChart.update();
+
+            localStorage.setItem(
+
+                'attendance',
+
+                JSON.stringify({
+
+                    present: present,
+                    absent: absent,
+                    mc: mc
+
+                })
+
+            );
+
+        }
+
+        // =========================
+        // RENDER TABLE
+        // =========================
+
+        function renderTable(data){
+
+            const table =
+                document.getElementById('attendanceTable');
+
+            table.innerHTML = '';
+
+            if(data.length === 0){
+
+                table.innerHTML = `
+
+                    <tr>
+
+                        <td colspan="5" class="text-center text-muted py-4">
+
+                            No attendance records yet
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+                return;
+
+            }
+
+            data.forEach((item, index) => {
+
+                let badgeClass = '';
+
+                if(item.status === 'Present'){
+
+                    badgeClass = 'bg-success';
+
+                } else if(item.status === 'Absent'){
+
+                    badgeClass = 'bg-danger';
+
+                } else {
+
+                    badgeClass =
+                        'bg-warning text-dark';
+
+                }
+
+                table.innerHTML += `
+
+                    <tr>
+
+                        <td>${formatDate(item.date)}</td>
+
+                        <td>${item.subject}</td>
+
+                        <td>${item.group}</td>
+
+                        <td>
+
+                            <span class="badge ${badgeClass}">
+
+                                ${item.status}
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <button
+                                class="action-btn"
+                                onclick="deleteAttendance(${index})"
+                            >
+
+                                <i class="bi bi-trash-fill"></i>
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            });
+
+        }
+
+        // =========================
+        // SUBMIT ATTENDANCE
+        // =========================
+
+        function submitAttendance(){
+
+            const subject =
+                document.getElementById('subject').value;
+
+            const group =
+                document.getElementById('group').value;
+
+            const status =
+                document.getElementById('status').value;
+
+            const attendanceDate =
+                document.getElementById('attendanceDate').value;
+
+            if(attendanceDate === ''){
+
+                alert('Please select attendance date');
+
+                return;
+
+            }
+
+            attendanceData.push({
+
+                subject: subject,
+                group: group,
+                status: status,
+                date: attendanceDate
+
+            });
+
+            localStorage.setItem(
+
+                'attendanceData',
+
+                JSON.stringify(attendanceData)
+
+            );
+
+            renderTable(attendanceData);
+
+            updateChart(attendanceData);
+
+            document.getElementById(
+                'attendanceDate'
+            ).value = '';
+
+            alert('Attendance submitted successfully!');
+
+        }
+
+        // =========================
+        // DELETE SINGLE RECORD
+        // =========================
+
+        function deleteAttendance(index){
+
+            const confirmDelete =
+                confirm(
+                    'Delete this attendance record?'
+                );
+
+            if(!confirmDelete){
+
+                return;
+
+            }
+
+            attendanceData.splice(index, 1);
+
+            localStorage.setItem(
+
+                'attendanceData',
+
+                JSON.stringify(attendanceData)
+
+            );
+
+            renderTable(attendanceData);
+
+            updateChart(attendanceData);
+
+        }
+
+        // =========================
+        // FILTER
+        // =========================
+
+        function filterAttendance(){
+
+            const filterDate =
+                document.getElementById('filterDate').value;
+
+            if(filterDate === ''){
+
+                renderTable(attendanceData);
+
+                updateChart(attendanceData);
+
+                return;
+
+            }
+
+            const filteredData =
+                attendanceData.filter(item =>
+                    item.date === filterDate
+                );
+
+            renderTable(filteredData);
+
+            updateChart(filteredData);
+
+        }
+
+        // =========================
+        // CLEAR ATTENDANCE
+        // =========================
+
+        function clearAttendance(){
+
+            const confirmDelete =
+                confirm(
+                    'Are you sure you want to delete all attendance records?'
+                );
+
+            if(!confirmDelete){
+
+                return;
+
+            }
+
+            attendanceData = [];
+
+            localStorage.removeItem('attendanceData');
+
+            localStorage.removeItem('attendance');
+
+            renderTable(attendanceData);
+
+            updateChart(attendanceData);
+
+        }
+
+        // =========================
+        // LOAD EXISTING DATA
+        // =========================
+
+        renderTable(attendanceData);
+
+        updateChart(attendanceData);
+
+</script>
+
+</body>
+</html>

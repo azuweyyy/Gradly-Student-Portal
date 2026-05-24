@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Chart.js -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Custom CSS -->
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        .clickable-card{
+
+            cursor: pointer;
+            transition: 0.3s;
+
+        }
+
+        .clickable-card:hover{
+
+            transform: translateY(-5px);
+
+        }
+
+        .profile-img{
+
+            width: 55px;
+            height: 55px;
+            object-fit: cover;
+            border-radius: 50%;
+
+        }
+
+        .profile-table-row{
+
+            cursor: pointer;
+            transition: 0.3s;
+
+        }
+
+        .profile-table-row:hover{
+
+            background-color: rgba(0,0,0,0.05);
+
+        }
+
+        .sidebar-logo-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+.sidebar-logo{
+    width:220px !important;
+    height:90px !important;
+    object-fit:contain;
+    display:block;
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="sidebar-logo-container">
+
+             <img src="images/logo.png" class="sidebar-logo">
+
+        </div>
+
+        <a href="dashboard.html" class="active">
+            <i class="bi bi-grid-fill"></i>
+            Dashboard
+        </a>
+
+        <a href="subjects.html">
+            <i class="bi bi-book-fill"></i>
+            Subjects
+        </a>
+
+        <a href="assignments.html">
+            <i class="bi bi-file-earmark-text-fill"></i>
+            Assignments
+        </a>
+
+        <a href="attendance.html">
+            <i class="bi bi-bar-chart-fill"></i>
+            Attendance
+        </a>
+
+        <a href="profile.html">
+            <i class="bi bi-person-circle"></i>
+            Profile
+        </a>
+
+        <a href="index.html">
+            <i class="bi bi-box-arrow-left"></i>
+            Logout
+        </a>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-content">
+
+        <!-- TOPBAR -->
+
+        <div class="topbar d-flex justify-content-between align-items-center shadow-sm">
+
+            <div>
+
+                <h4 class="fw-bold mb-0">
+                    Dashboard
+                </h4>
+
+                <small class="text-muted">
+                    Welcome back, Azwa!
+                </small>
+
+            </div>
+
+            <button class="dark-mode-toggle" id="darkModeToggle">
+
+                <i class="bi bi-moon-stars-fill" id="darkModeIcon"></i>
+
+            </button>
+
+        </div>
+
+        <!-- SUMMARY CARDS -->
+
+        <div class="row g-4 mb-4">
+
+            <!-- SUBJECTS -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div
+                    class="card dashboard-card shadow-sm clickable-card"
+                    onclick="window.location.href='subjects.html'"
+                >
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div>
+
+                            <p class="text-muted mb-1">
+                                Total Subjects
+                            </p>
+
+                            <h3 class="fw-bold" id="totalSubjects">
+                                0
+                            </h3>
+
+                        </div>
+
+                        <div class="card-icon bg-blue">
+
+                            <i class="bi bi-book-fill"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ASSIGNMENTS -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div
+                    class="card dashboard-card shadow-sm clickable-card"
+                    onclick="window.location.href='assignments.html'"
+                >
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div>
+
+                            <p class="text-muted mb-1">
+                                Total Assignments
+                            </p>
+
+                            <h3 class="fw-bold">
+                                14
+                            </h3>
+
+                        </div>
+
+                        <div class="card-icon bg-orange">
+
+                            <i class="bi bi-file-earmark-text-fill"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+            
+
+            <!-- ATTENDANCE -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div
+                    class="card dashboard-card shadow-sm clickable-card"
+                    onclick="window.location.href='attendance.html'"
+                >
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div>
+
+                            <p class="text-muted mb-1">
+                                Attendance Rate
+                            </p>
+
+                            <h3 class="fw-bold" id="attendancePercent">
+                                0%
+                            </h3>
+
+                        </div>
+
+                        <div class="card-icon bg-green">
+
+                            <i class="bi bi-check-circle-fill"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CGPA -->
+
+            <div class="col-lg-3 col-md-6">
+
+                <div
+                    class="card dashboard-card shadow-sm clickable-card"
+                    onclick="scrollToChart()"
+                >
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div>
+
+                            <p class="text-muted mb-1">
+                                Current CGPA
+                            </p>
+
+                            <h3 class="fw-bold" id="cgpaDisplay">
+                                0.00
+                            </h3>
+
+                        </div>
+
+                        <div class="card-icon bg-purple">
+
+                            <i class="bi bi-graph-up-arrow"></i>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CHART + PROFILE -->
+
+        <div class="row g-4">
+
+            <!-- GPA CHART -->
+
+            <div class="col-lg-8">
+
+                <div class="chart-card shadow-sm">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+
+                        <h5 class="fw-bold mb-0">
+                            Academic Performance
+                        </h5>
+
+                        <span class="text-muted">
+                            Semester 2026
+                        </span>
+
+                    </div>
+
+                    <canvas id="performanceChart"></canvas>
+
+                </div>
+
+            </div>
+
+            <!-- PROFILE CARD -->
+
+            <!-- PROFILE CARD -->
+
+<div class="col-lg-4">
+
+    <div
+        class="table-card shadow-sm h-100 d-flex flex-column justify-content-center align-items-center text-center clickable-card"
+        onclick="window.location.href='profile.html'"
+    >
+
+        <!-- PROFILE IMAGE -->
+
+        <img
+            src="images/profile.jpg"
+            alt="Profile"
+            class="profile-img mb-4"
+            style="
+                width: 140px;
+                height: 140px;
+                object-fit: cover;
+                border-radius: 50%;
+            "
+        >
+
+        <!-- NAME -->
+
+        <h3 class="fw-bold mb-2">
+            Nur Azwa
+        </h3>
+
+        <!-- INFO -->
+
+        <p class="text-muted mb-2">
+            Semester 4
+        </p>
+
+        <p class="text-muted mb-0">
+            CDIM2624ST1
+        </p>
+
+    </div>
+
+</div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- DASHBOARD SCRIPT -->
+
+    <script>
+
+        // =========================
+        // SUBJECTS
+        // =========================
+
+        let subjects =
+            JSON.parse(
+                localStorage.getItem('subjects')
+            ) || [];
+
+        document.getElementById(
+            'totalSubjects'
+        ).innerText = subjects.length;
+
+        // =========================
+        // ATTENDANCE
+        // =========================
+
+        let attendance =
+            JSON.parse(
+                localStorage.getItem('attendance')
+            );
+
+        if(attendance){
+
+            let totalAttendance =
+
+                attendance.present +
+                attendance.absent +
+                attendance.mc;
+
+            let percentage = 0;
+
+            if(totalAttendance > 0){
+
+                percentage = Math.round(
+
+                    (attendance.present /
+                    totalAttendance)
+
+                    * 100
+
+                );
+
+            }
+
+            document.getElementById(
+                'attendancePercent'
+            ).innerText = percentage + "%";
+
+        }
+
+        // =========================
+        // GPA DATA
+        // =========================
+
+        let semesterGPA =
+            JSON.parse(
+                localStorage.getItem('semesterGPA')
+            ) || [
+
+                3.49,
+                3.54,
+                3.80
+
+            ];
+
+        // =========================
+        // CGPA
+        // =========================
+
+        let total =
+            semesterGPA.reduce(
+                (a, b) => a + b,
+                0
+            );
+
+        let cgpa =
+            (total / semesterGPA.length)
+            .toFixed(2);
+
+        document.getElementById(
+            'cgpaDisplay'
+        ).innerText = cgpa;
+
+        // =========================
+        // GPA LINE CHART
+        // =========================
+
+        const ctx =
+            document.getElementById(
+                'performanceChart'
+            );
+
+        new Chart(ctx, {
+
+            type: 'line',
+
+            data: {
+
+                labels: [
+
+                    'Semester 1',
+                    'Semester 2',
+                    'Semester 3',
+                    'Semester 4',
+                    'Semester 5',
+                    'Semester 6'
+
+                ],
+
+                datasets: [{
+
+                    label: 'GPA',
+
+                    data: semesterGPA,
+
+                    tension: 0.4,
+
+                    fill: false,
+
+                    borderWidth: 3,
+
+                    pointRadius: 5
+
+                }]
+
+            },
+
+            options: {
+
+                responsive: true,
+
+                plugins: {
+
+                    legend: {
+
+                        display: true
+
+                    }
+
+                },
+
+                scales: {
+
+                    y: {
+
+                        min: 0,
+                        max: 4
+
+                    }
+
+                }
+
+            }
+
+        });
+
+    </script>
+
+    <!-- DARK MODE -->
+
+    <!-- DARK MODE -->
+
+<script>
+
+    const darkModeToggle =
+        document.getElementById('darkModeToggle');
+
+    const darkModeIcon =
+        document.getElementById('darkModeIcon');
+
+    const body =
+        document.body;
+
+    // =========================
+    // LOAD SAVED THEME
+    // =========================
+
+    const savedTheme =
+        localStorage.getItem('theme') || 'light';
+
+    body.setAttribute(
+        'data-bs-theme',
+        savedTheme
+    );
+
+    updateIcon(savedTheme);
+
+    // =========================
+    // TOGGLE DARK MODE
+    // =========================
+
+    darkModeToggle.addEventListener('click', () => {
+
+        const currentTheme =
+            body.getAttribute('data-bs-theme');
+
+        const newTheme =
+            currentTheme === 'dark'
+            ? 'light'
+            : 'dark';
+
+        body.setAttribute(
+            'data-bs-theme',
+            newTheme
+        );
+
+        localStorage.setItem(
+            'theme',
+            newTheme
+        );
+
+        updateIcon(newTheme);
+
+    });
+
+    // =========================
+    // UPDATE ICON
+    // =========================
+
+    function updateIcon(theme){
+
+        if(theme === 'dark'){
+
+            darkModeIcon.className =
+                'bi bi-sun-fill';
+
+        } else {
+
+            darkModeIcon.className =
+                'bi bi-moon-stars-fill';
+
+        }
+
+    }
+
+</script>
+
+</body>
+</html>

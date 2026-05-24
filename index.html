@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gradly Student Profile</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    font-family:'Poppins',sans-serif;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#b9dceb;
+    background-image:
+    radial-gradient(circle at top right, rgba(255,255,255,0.35), transparent 30%),
+    radial-gradient(circle at bottom left, rgba(255,255,255,0.25), transparent 25%);
+}
+
+/* WRAPPER */
+
+.page-wrapper{
+    width:100%;
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+/* MAIN CARD */
+
+.main-card{
+    width:100%;
+    max-width:1080px;
+    height:88vh;
+    background:rgba(255,255,255,0.90);
+    backdrop-filter:blur(18px);
+    border-radius:35px;
+    overflow:hidden;
+    box-shadow:0 25px 60px rgba(0,0,0,0.12);
+    border:1px solid rgba(255,255,255,0.5);
+}
+
+.main-card .row{
+    height:100%;
+}
+
+/* LEFT PANEL */
+
+.left-panel{
+    background:#0d0d0d;
+    color:white;
+    padding:30px 40px;
+    height:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.left-panel > *{
+    position:relative;
+    top:-18px;
+}
+
+/* SMALL STAR */
+
+.left-panel::after{
+    content:"✦";
+    position:absolute;
+    top:85px;
+    right:55px;
+    font-size:28px;
+    color:#9cecff;
+    opacity:0.8;
+    text-shadow:0 0 10px rgba(156,236,255,0.5);
+}
+
+/* LOGO */
+
+.portal-logo{
+    width:300px;
+    max-width:100%;
+    margin:0 auto 25px auto;
+    display:block;
+    object-fit:contain;
+}
+
+/* ICON */
+
+.portal-icon{
+    font-size:38px;
+    margin-bottom:18px;
+    margin-left:40px;
+    margin-top:-10px;
+    color:#8de7ff;
+    line-height:1;
+}
+
+/* TITLE */
+
+.left-panel h2{
+    font-size:32px;
+    font-weight:700;
+    line-height:1.25;
+    margin-bottom:15px;
+}
+
+/* DESCRIPTION */
+
+.left-panel p{
+    color:#d1d5db;
+    line-height:1.7;
+    max-width:320px;
+    margin:0;
+    font-size:14px;
+}
+
+/* RIGHT PANEL */
+
+.right-panel{
+    height:100%;
+    padding:55px 50px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    background:#fcfcfc;
+}
+
+/* TITLE */
+
+.section-title{
+    font-weight:700;
+    font-size:35px;
+    color:#111827;
+    margin-bottom:5px;
+}
+
+.small-text{
+    font-size:14px;
+    color:#6b7280;
+    margin-bottom:28px;
+}
+
+/* LABEL */
+
+label{
+    font-weight:500;
+    margin-bottom:8px;
+    color:#374151;
+}
+
+/* INPUT */
+
+.form-control{
+    border:none;
+    background:#eef7fb;
+    border-radius:16px;
+    padding:15px 18px;
+    font-size:14px;
+    box-shadow:none !important;
+    margin-bottom:8px;
+}
+
+.form-control:focus{
+    background:#e4f5fb;
+    border:1px solid #8de7ff;
+}
+
+/* VALIDATION */
+
+.validation-text{
+    font-size:12px;
+    color:#94a3b8;
+    margin-top:-2px;
+    margin-bottom:18px;
+}
+
+/* BUTTON */
+
+.btn-main{
+    background:#111111;
+    border:none;
+    border-radius:16px;
+    padding:15px;
+    color:white;
+    font-weight:500;
+    transition:0.3s;
+    margin-top:10px;
+}
+
+.btn-main:hover{
+    background:#1f2937;
+    transform:translateY(-2px);
+}
+
+/* FOOTER */
+
+.footer-text{
+    text-align:center;
+    font-size:13px;
+    color:#94a3b8;
+    margin-top:28px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    html,
+    body{
+        overflow:auto;
+    }
+
+    .page-wrapper{
+        height:auto;
+        min-height:100vh;
+        padding:15px;
+    }
+
+    .main-card{
+        height:auto;
+    }
+
+    .left-panel{
+        padding:35px 28px;
+        text-align:center;
+        align-items:center;
+    }
+
+    .left-panel h2{
+        font-size:28px;
+    }
+
+    .right-panel{
+        padding:35px 25px;
+    }
+
+    .left-panel::after{
+        top:25px;
+        right:25px;
+    }
+
+    .portal-logo{
+        width:230px;
+        margin-bottom:20px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="page-wrapper">
+
+    <div class="main-card">
+
+        <div class="row g-0">
+
+            <!-- LEFT -->
+
+            <div class="col-md-5">
+
+                <div class="left-panel">
+
+                    <img src="images/logo.png" class="portal-logo">
+
+                    <i class="bi bi-stars portal-icon"></i>
+
+                    <h2>
+                        Digital Space
+                        For Learning
+                    </h2>
+
+                    <p>
+                        Manage your academic progress, assignments,
+                        attendance and profile in one modern system.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT -->
+
+            <div class="col-md-7">
+
+                <div class="right-panel">
+
+                    <h3 class="section-title">
+                        Welcome Back
+                    </h3>
+
+                    <p class="small-text">
+                        Sign in using your student account
+                    </p>
+
+                    <!-- STUDENT NUMBER -->
+
+                    <label>Student Number</label>
+
+                    <input 
+                        type="text" 
+                        id="studentNo"
+                        class="form-control"
+                        placeholder="2024123456"
+                        maxlength="10"
+                    >
+
+                    <p class="validation-text">
+                        Must contain exactly 10 numbers
+                    </p>
+
+                    <!-- PASSWORD -->
+
+                    <label>Password</label>
+
+                    <input 
+                        type="password" 
+                        id="password"
+                        class="form-control"
+                        placeholder="Enter password"
+                    >
+
+                    <p class="validation-text">
+                        Must contain uppercase, lowercase, number and at least 8 characters
+                    </p>
+
+                    <!-- BUTTON -->
+
+                    <button 
+                        class="btn btn-main w-100"
+                        id="loginBtn"
+                    >
+                        <i class="bi bi-box-arrow-in-right me-2"></i>
+                        Login
+                    </button>
+
+                    <p class="footer-text">
+                        Academic Session 2026/2027
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const loginBtn = document.getElementById("loginBtn");
+
+loginBtn.addEventListener("click", function(){
+
+    const studentNo = document.getElementById("studentNo").value.trim();
+    const password = document.getElementById("password").value;
+
+    // STUDENT NUMBER VALIDATION
+
+    const studentRegex = /^\d{10}$/;
+
+    // PASSWORD VALIDATION
+
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    let errorMessage = "";
+
+    // CHECK STUDENT NUMBER
+
+    if(!studentRegex.test(studentNo)){
+
+        if(studentNo.length < 10){
+            errorMessage += "Student number is not enough (must be 10 digits).\n";
+        }
+
+        else if(studentNo.length > 10){
+            errorMessage += "Student number is too long (must be 10 digits).\n";
+        }
+
+        else{
+            errorMessage += "Student number must contain numbers only.\n";
+        }
+    }
+
+    // CHECK PASSWORD
+
+    if(!passwordRegex.test(password)){
+        errorMessage += "Password must contain uppercase, lowercase, number and atleast 8 characters.\n";
+    }
+
+    // ERROR
+
+    if(errorMessage !== ""){
+        alert("Login Failed!\n\n" + errorMessage + "\nPlease try again.");
+    }
+
+    // SUCCESS
+
+    else{
+        window.location.href = "dashboard.html";
+    }
+
+});
+
+</script>
+
+</body>
+</html>

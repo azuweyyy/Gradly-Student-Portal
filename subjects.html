@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subjects</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+.sidebar-logo-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+.sidebar-logo{
+    width:220px !important;
+    height:90px !important;
+    object-fit:contain;
+    display:block;
+}
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="sidebar-logo-container">
+
+             <img src="images/logo.png" class="sidebar-logo">
+
+        </div>
+
+        <a href="dashboard.html">
+            <i class="bi bi-grid-fill"></i>
+            Dashboard
+        </a>
+
+        <a href="subjects.html" class="active">
+            <i class="bi bi-book-fill"></i>
+            Subjects
+        </a>
+
+        <a href="assignments.html">
+            <i class="bi bi-file-earmark-text-fill"></i>
+            Assignments
+        </a>
+
+        <a href="attendance.html">
+            <i class="bi bi-bar-chart-fill"></i>
+            Attendance
+        </a>
+
+        <a href="profile.html">
+            <i class="bi bi-person-circle"></i>
+            Profile
+        </a>
+
+        <a href="index.html">
+            <i class="bi bi-box-arrow-left"></i>
+            Logout
+        </a>
+
+    </div>
+
+    <!-- MAIN CONTENT -->
+
+    <div class="main-content">
+
+        <div class="topbar d-flex justify-content-between align-items-center shadow-sm">
+
+            <div>
+                <h4 class="fw-bold mb-0">Subjects</h4>
+                <small class="text-muted">
+                    Registered subjects for Semester 2026
+                </small>
+            </div>
+
+            <button class="dark-mode-toggle" id="darkModeToggle">
+                <i class="bi bi-moon-stars-fill" id="darkModeIcon"></i>
+            </button>
+
+        </div>
+
+        <!-- TABLE -->
+
+        <div class="table-card shadow-sm">
+
+            <div class="d-flex justify-content-between align-items-center mb-4">
+
+                <h5 class="fw-bold mb-0">
+                    Subject List
+                </h5>
+
+
+            </div>
+
+            <div class="table-responsive">
+
+                <table class="table align-middle">
+
+                    <thead>
+
+                        <tr>
+                            <th>Code</th>
+                            <th>Subject</th>
+                            <th>Lecturer</th>
+                            <th>Credit Hour</th>
+                            <th>Status</th>
+                            <th>Information</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+    <!-- SUBJECT 1 -->
+
+    <tr>
+        <td>IMS560</td>
+        <td>Advance Database Management System</td>
+        <td>Madam Hasinah</td>
+        <td>3.0</td>
+        <td>
+            <span class="badge bg-success">
+                Active
+            </span>
+        </td>
+
+        <td>
+            <button 
+                class="btn btn-primary btn-sm"
+                data-bs-toggle="collapse"
+                data-bs-target="#subject1"
+            >
+                View
+            </button>
+        </td>
+    </tr>
+
+    <tr class="collapse" id="subject1">
+        <td colspan="6">
+
+            <div class="p-3 bg-body-tertiary rounded">
+
+                <p><strong>Course Summary:</strong> Database design, SQL, normalization, database security and management.</p>
+
+                <p><strong>Lecturer Name:</strong> Madam Hasinah.</p>
+
+                <p><strong>Announcement:</strong> See you in class. </p>
+
+                <p><strong>Learning Materials:</strong> Will be updated.</p>
+
+                <p>
+                    <strong>Online Class Link:</strong>
+                    <a href="https://meet.google.com/landing">Join Class</a>
+                </p>
+
+            </div>
+
+        </td>
+    </tr>
+
+    <!-- SUBJECT 2 -->
+
+    <tr>
+        <td>IMS562</td>
+        <td>Information Security</td>
+        <td>Miss Nadiatul Aziz</td>
+        <td>3.0</td>
+        <td>
+            <span class="badge bg-success">
+                Active
+            </span>
+        </td>
+
+        <td>
+            <button 
+                class="btn btn-primary btn-sm"
+                data-bs-toggle="collapse"
+                data-bs-target="#subject2"
+            >
+                View
+            </button>
+        </td>
+    </tr>
+
+    <tr class="collapse" id="subject2">
+        <td colspan="6">
+
+            <div class="p-3 bg-body-tertiary rounded">
+
+                <p><strong>Course Summary:</strong> Cybersecurity, encryption, network protection and risk management.</p>
+
+                <p><strong>Lecturer Name:</strong> Miss Nadiatul Aziz.</p>
+
+                <p><strong>Announcement:</strong> We will meet next week.</p>
+
+                <p><strong>Learning Materials:</strong> Will be updated.</p>
+
+                <p>
+                    <strong>Online Class Link:</strong>
+                    <a href="https://meet.google.com/landing">Join Class</a> 
+                </p>       
+
+            </div>
+
+        </td>
+    </tr>
+
+    <!-- SUBJECT 3 -->
+
+    <tr>
+        <td>IMS564</td>
+        <td>User Experience Design</td>
+        <td>Dr Norizan Anwar</td>
+        <td>3.0</td>
+        <td>
+            <span class="badge bg-success">
+                Active
+            </span>
+        </td>
+
+        <td>
+            <button 
+                class="btn btn-primary btn-sm"
+                data-bs-toggle="collapse"
+                data-bs-target="#subject3"
+            >
+                View
+            </button>
+        </td>
+    </tr>
+
+    <tr class="collapse" id="subject3">
+        <td colspan="6">
+
+            <div class="p-3 bg-body-tertiary rounded">
+
+                <p><strong>Course Summary:</strong> UI/UX principles, wireframing, prototyping and user testing.</p>
+
+                <p><strong>Lecturer Name:</strong> Dr Norizan Anwar.</p>
+
+                <p><strong>Announcement:</strong> Please introduce yourself in our first class. Thank you</p>
+
+                <p><strong>Learning Materials:</strong> Will be updated.</p>
+
+                <p>
+                    <strong>Online Class Link:</strong>
+                    <a href="https://meet.google.com/landing">Join Class</a> 
+                </p>  
+
+            </div>
+
+        </td>
+    </tr>
+
+    <!-- SUBJECT 4 -->
+
+    <tr>
+        <td>IMS565</td>
+        <td>Information Systems Project Management</td>
+        <td>Sir Khairul Mizan</td>
+        <td>3.0</td>
+        <td>
+            <span class="badge bg-success">
+                Active
+            </span>
+        </td>
+
+        <td>
+            <button 
+                class="btn btn-primary btn-sm"
+                data-bs-toggle="collapse"
+                data-bs-target="#subject4"
+            >
+                View
+            </button>
+        </td>
+    </tr>
+
+    <tr class="collapse" id="subject4">
+        <td colspan="6">
+
+            <div class="p-3 bg-body-tertiary rounded">
+
+                <p><strong>Course Summary:</strong> Information systems planning, development, implementation, project management and system evaluation.</p>
+
+                <p><strong>Lecturer Name:</strong> Sir Khairul Mizan.</p>
+
+                <p><strong>Announcement:</strong> Salam all. We will conduct our online class at 9AM tomorrow. TQVM.</p>
+
+                <p><strong>Learning Materials:</strong> Will be updated.</p>
+
+                <p>
+                    <strong>Online Class Link:</strong>
+                    <a href="https://meet.google.com/landing">Join Class</a> 
+                </p>  
+
+            </div>
+
+        </td>
+    </tr>
+
+    <!-- SUBJECT 5 -->
+
+    <tr>
+        <td>IMS566</td>
+        <td>Advanced Web Design Development and Content Management</td>
+        <td>Dr Asyraf Wahi Anuar</td>
+        <td>4.0</td>
+        <td>
+            <span class="badge bg-success">
+                Active
+            </span>
+        </td>
+
+        <td>
+            <button 
+                class="btn btn-primary btn-sm"
+                data-bs-toggle="collapse"
+                data-bs-target="#subject5"
+            >
+                View
+            </button>
+        </td>
+    </tr>
+
+    <tr class="collapse" id="subject5">
+        <td colspan="6">
+
+            <div class="p-3 bg-body-tertiary rounded">
+
+                <p><strong>Course Summary:</strong> Advanced web design, web development, content management systems (CMS) and interactive website creation.</p>
+
+                <p><strong>Lecturer Name:</strong> Dr Asyraf Wahi Anuar.</p>
+
+                <p><strong>Announcement:</strong> See you at 9AM.</p>
+
+                <p><strong>Learning Materials:</strong> Will be updated.</p>
+
+                <p>
+                    <strong>Online Class Link:</strong>
+                    <a href="https://meet.google.com/landing">Join Class</a> 
+                </p>  
+
+            </div>
+
+        </td>
+    </tr>
+
+
+    <!-- SUBJECT 6 -->
+
+    <tr>
+        <td>LCC501</td>
+        <td>English for Professional Correspondence</td>
+        <td>Madam Munirah</td>
+        <td>2.0</td>
+        <td>
+            <span class="badge bg-success">
+                Active
+            </span>
+        </td>
+
+        <td>
+            <button 
+                class="btn btn-primary btn-sm"
+                data-bs-toggle="collapse"
+                data-bs-target="#subject6"
+            >
+                View
+            </button>
+        </td>
+    </tr>
+
+    <tr class="collapse" id="subject6">
+        <td colspan="6">
+
+            <div class="p-3 bg-body-tertiary rounded">
+
+                <p><strong>Course Summary:</strong> Professional email writing, business correspondence, formal letters and workplace communication.</p>
+
+                <p><strong>Lecturer Name:</strong> Madam Munirah.</p>
+
+                <p><strong>Announcement:</strong> So excited to meet you at class! </p>
+
+                <p><strong>Learning Materials:</strong> Will be updated.</p>
+
+                <p>
+                    <strong>Online Class Link:</strong>
+                    <a href="https://meet.google.com/landing">Join Class</a> 
+                </p>  
+
+            </div>
+
+        </td>
+    </tr>
+
+    <!-- SUBJECT 7 -->
+
+    <tr>
+        <td>TMC501</td>
+        <td>Introductory Mandarin (III)</td>
+        <td>Laoshi Hong Wei San</td>
+        <td>2.0</td>
+        <td>
+            <span class="badge bg-success">
+                Active
+            </span>
+        </td>
+
+        <td>
+            <button 
+                class="btn btn-primary btn-sm"
+                data-bs-toggle="collapse"
+                data-bs-target="#subject7"
+            >
+                View
+            </button>
+        </td>
+    </tr>
+
+    <tr class="collapse" id="subject7">
+        <td colspan="6">
+
+            <div class="p-3 bg-body-tertiary rounded">
+
+                <p><strong>Course Summary:</strong> Basic Mandarin communication, vocabulary, grammar and everyday conversation skills.</p>
+
+                <p><strong>Lecturer Name:</strong> Laoshi Hong Wei San.</p>
+
+                <p><strong>Announcement:</strong> Please submit your chapter 1 exercise tomorrow. </p>
+
+                <p><strong>Learning Materials:</strong> Will be updated.</p>
+
+                <p>
+                    <strong>Online Class Link:</strong>
+                    <a href="https://meet.google.com/landing">Join Class</a> 
+                </p>  
+
+            </div>
+
+        </td>
+    </tr>
+
+</tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="js/darkmode.js"></script>
+
+    <script>
+
+    const darkModeToggle =
+        document.getElementById('darkModeToggle');
+
+    const darkModeIcon =
+        document.getElementById('darkModeIcon');
+
+    const body =
+        document.body;
+
+    // =========================
+    // LOAD SAVED THEME
+    // =========================
+
+    const savedTheme =
+        localStorage.getItem('theme') || 'light';
+
+    body.setAttribute(
+        'data-bs-theme',
+        savedTheme
+    );
+
+    updateIcon(savedTheme);
+
+    // =========================
+    // TOGGLE DARK MODE
+    // =========================
+
+    darkModeToggle.addEventListener('click', () => {
+
+        const currentTheme =
+            body.getAttribute('data-bs-theme');
+
+        const newTheme =
+            currentTheme === 'dark'
+            ? 'light'
+            : 'dark';
+
+        body.setAttribute(
+            'data-bs-theme',
+            newTheme
+        );
+
+        localStorage.setItem(
+            'theme',
+            newTheme
+        );
+
+        updateIcon(newTheme);
+
+    });
+
+    // =========================
+    // UPDATE ICON
+    // =========================
+
+    function updateIcon(theme){
+
+        if(theme === 'dark'){
+
+            darkModeIcon.className =
+                'bi bi-sun-fill';
+
+        } else {
+
+            darkModeIcon.className =
+                'bi bi-moon-stars-fill';
+
+        }
+
+    }
+
+</script>
+
+<script>
+
+    let subjects = [
+
+        "IMS566",
+        "IMS564",
+        "IMS565",
+        "IMS567",
+        "IMS568",
+        "TMC501",
+        "LCC501"
+
+    ];
+
+    localStorage.setItem(
+        'subjects',
+        JSON.stringify(subjects)
+    );
+
+</script>
+
+
+</body>
+</html>

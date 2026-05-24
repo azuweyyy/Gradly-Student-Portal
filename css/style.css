@@ -1,0 +1,657 @@
+/* =========================
+   GOOGLE FONT + BODY
+========================= */
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(
+        135deg,
+        #b9e7ff 0%,
+        #d9f3ff 45%,
+        #c8ecff 100%
+    );
+    background-attachment:fixed;
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+    transition:0.3s;
+}
+
+/* BACKGROUND GLOW */
+
+body::before{
+    content:'';
+    position:fixed;
+    top:-250px;
+    right:-180px;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle, rgba(255,255,255,0.45), transparent 65%);
+    z-index:-1;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    bottom:-250px;
+    left:-180px;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle, rgba(255,255,255,0.3), transparent 65%);
+    z-index:-1;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar{
+    width:260px;
+    height:100vh;
+
+    background:#000000 !important;
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    padding:18px 16px;
+
+    border-top-right-radius:30px;
+    border-bottom-right-radius:30px;
+
+    box-shadow:
+    10px 0 35px rgba(0,0,0,0.25);
+
+    overflow:hidden;
+
+    z-index:999;
+
+    display:flex;
+    flex-direction:column;
+}
+
+/* REMOVE BOOTSTRAP OVERRIDE */
+
+.sidebar *{
+    color:inherit;
+}
+
+/* =========================
+   SIDEBAR LOGO
+========================= */
+
+.sidebar-logo-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:24px;
+    padding:0;
+}
+
+/* BIGGER LOGO */
+
+.sidebar-logo{
+    width:100% !important;
+    max-width:230px !important;
+    height:110px !important;
+    object-fit:contain;
+    display:block;
+    filter:drop-shadow(0 8px 15px rgba(0,0,0,0.3));
+}
+
+/* =========================
+   SIDEBAR MENU
+========================= */
+
+.sidebar a{
+    display:flex;
+    align-items:center;
+    color:#dbeafe;
+    text-decoration:none;
+    padding:13px 16px;
+    border-radius:18px;
+    margin-bottom:10px;
+    transition:0.3s;
+    font-weight:500;
+    font-size:15px;
+    border:1px solid transparent;
+    flex-shrink:0;
+}
+
+.sidebar a:hover,
+.sidebar a.active{
+    background:rgba(130,220,255,0.12);
+    color:#8de7ff;
+    border:1px solid rgba(141,231,255,0.18);
+    transform:translateX(4px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.sidebar a i{
+    margin-right:14px;
+    font-size:18px;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content{
+    margin-left:260px;
+    padding:32px;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+    background:rgba(255,255,255,0.72);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    padding:18px 28px;
+    border-radius:28px;
+    margin-bottom:30px;
+    border:1px solid rgba(255,255,255,0.45);
+    box-shadow:
+    0 10px 30px rgba(15,23,42,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.5);
+    transition:0.3s;
+}
+
+/* =========================
+   DASHBOARD CARD
+========================= */
+
+.dashboard-card{
+    border:none;
+    border-radius:28px;
+    padding:26px;
+    transition:0.3s;
+    background:rgba(255,255,255,0.74);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    box-shadow:
+    0 10px 30px rgba(15,23,42,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.55);
+    border:1px solid rgba(255,255,255,0.4);
+}
+
+.dashboard-card:hover{
+    transform:translateY(-6px);
+    box-shadow:
+    0 18px 35px rgba(15,23,42,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.55);
+}
+
+/* =========================
+   CARD ICON
+========================= */
+
+.card-icon{
+    width:68px;
+    height:68px;
+    border-radius:22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    color:white;
+    box-shadow:0 10px 20px rgba(0,0,0,0.12);
+}
+
+.bg-blue{
+    background:linear-gradient(135deg,#38bdf8,#2563eb);
+}
+
+.bg-green{
+    background:linear-gradient(135deg,#34d399,#10b981);
+}
+
+.bg-orange{
+    background:linear-gradient(135deg,#fb923c,#f97316);
+}
+
+.bg-purple{
+    background:linear-gradient(135deg,#8b5cf6,#6d28d9);
+}
+
+/* =========================
+   CHART + TABLE CARD
+========================= */
+
+.chart-card,
+.table-card{
+    background:rgba(255,255,255,0.74);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    border-radius:28px;
+    padding:28px;
+    border:1px solid rgba(255,255,255,0.4);
+    box-shadow:
+    0 10px 30px rgba(15,23,42,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.55);
+    transition:0.3s;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.table{
+    border-radius:18px;
+    overflow:hidden;
+}
+
+.table th{
+    font-weight:600;
+    border:none;
+    background:#eff8ff;
+    color:#334155;
+    padding:16px;
+}
+
+.table td{
+    vertical-align:middle;
+    border-color:#e2e8f0;
+    padding:16px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+    border-radius:14px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.btn-primary{
+    background:linear-gradient(135deg,#38bdf8,#2563eb);
+    border:none;
+    box-shadow:0 8px 18px rgba(37,99,235,0.25);
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px);
+    background:linear-gradient(135deg,#0ea5e9,#1d4ed8);
+}
+
+/* =========================
+   DARK MODE BUTTON
+========================= */
+
+.dark-mode-toggle{
+    border:none;
+    background:rgba(255,255,255,0.7);
+    width:48px;
+    height:48px;
+    border-radius:16px;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.06);
+}
+
+.dark-mode-toggle:hover{
+    transform:scale(1.05);
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-control,
+.form-select{
+    border:none;
+    background:#f0f9ff;
+    border-radius:16px;
+    padding:13px 18px;
+    box-shadow:none !important;
+}
+
+.form-control:focus,
+.form-select:focus{
+    background:#ffffff;
+    border:1px solid #7dd3fc;
+    box-shadow:0 0 0 4px rgba(125,211,252,0.2) !important;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal-content{
+    border:none;
+    border-radius:28px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.12);
+    overflow:hidden;
+    background:rgba(255,255,255,0.95);
+}
+
+.modal-header{
+    padding:22px 26px;
+    border-bottom:1px solid #edf2f7;
+}
+
+.modal-body{
+    padding:26px;
+}
+
+/* =========================
+   INFO BOX
+========================= */
+
+.info-box{
+    background:#f8fcff;
+    border-radius:18px;
+    padding:18px;
+    height:100%;
+    border:1px solid #dbeafe;
+    transition:0.3s;
+}
+
+.info-box:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 20px rgba(0,0,0,0.06);
+}
+
+.info-title{
+    font-size:12px;
+    color:#64748b;
+    margin-bottom:5px;
+    text-transform:uppercase;
+    letter-spacing:0.6px;
+}
+
+.info-value{
+    font-weight:600;
+    font-size:15px;
+    color:#0f172a;
+}
+
+/* =========================
+   NOTES BOX
+========================= */
+
+.notes-box{
+    background:#f8fcff;
+    border:1px solid #dbeafe;
+    border-radius:18px;
+    padding:18px;
+    margin-top:18px;
+}
+
+.notes-box p{
+    margin:6px 0 0;
+    line-height:1.8;
+    color:#475569;
+}
+
+.submission-link{
+    text-decoration:none;
+    font-weight:600;
+    color:#0284c7;
+}
+
+/* =========================
+   STATUS SELECT
+========================= */
+
+.status-select{
+    width:125px !important;
+    min-width:125px !important;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    font-size:13px;
+
+    border:none;
+
+    padding:
+    5px 28px 5px 10px !important;
+}
+
+.status-select.status-not-started{
+    background:#e5e7eb !important;
+    color:#374151 !important;
+}
+
+.status-select.status-in-progress{
+    background:#dbeafe !important;
+    color:#1d4ed8 !important;
+}
+
+.status-select.status-pending{
+    background:#fef3c7 !important;
+    color:#b45309 !important;
+}
+
+.status-select.status-completed{
+    background:#dcfce7 !important;
+    color:#15803d !important;
+}
+
+.status-select.status-submitted{
+    background:#ede9fe !important;
+    color:#7c3aed !important;
+}
+
+/* =========================
+   PROFILE PAGE
+========================= */
+
+.profile-card,
+.profile-details{
+    border:none;
+    border-radius:28px;
+    background:rgba(255,255,255,0.74);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,0.4);
+    box-shadow:
+    0 10px 30px rgba(15,23,42,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.55);
+}
+
+.profile-image{
+    width:160px !important;
+    height:160px !important;
+    max-width:160px !important;
+    max-height:160px !important;
+    object-fit:cover;
+    border-radius:50% !important;
+    border:6px solid #7dd3fc;
+    display:block;
+    margin:0 auto;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+.student-status{
+    background:#dcfce7 !important;
+    color:#16a34a !important;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:500;
+    display:inline-block;
+}
+
+.profile-label{
+    font-size:14px;
+    color:#64748b;
+    margin-bottom:5px;
+}
+
+.profile-value{
+    font-size:16px;
+    font-weight:600;
+    color:#111827;
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+body[data-bs-theme="dark"]{
+    background:#020617;
+}
+
+body[data-bs-theme="dark"] body{
+    background:linear-gradient(
+        135deg,
+        #020617,
+        #081226,
+        #0f172a
+    );
+}
+
+body[data-bs-theme="dark"] .sidebar{
+    background:linear-gradient(
+        180deg,
+        #020617,
+        #081226,
+        #0f172a
+    ) !important;
+}
+
+body[data-bs-theme="dark"] .topbar,
+body[data-bs-theme="dark"] .dashboard-card,
+body[data-bs-theme="dark"] .chart-card,
+body[data-bs-theme="dark"] .table-card,
+body[data-bs-theme="dark"] .modal-content,
+body[data-bs-theme="dark"] .profile-card,
+body[data-bs-theme="dark"] .profile-details{
+    background:rgba(15,23,42,0.88);
+    color:white;
+    border:1px solid rgba(255,255,255,0.05);
+}
+
+body[data-bs-theme="dark"] .table{
+    color:white;
+}
+
+body[data-bs-theme="dark"] .table th{
+    background:#1e293b;
+    color:white;
+}
+
+body[data-bs-theme="dark"] .text-muted{
+    color:#cbd5e1 !important;
+}
+
+body[data-bs-theme="dark"] .dark-mode-toggle{
+    background:#1e293b;
+    color:white;
+}
+
+body[data-bs-theme="dark"] .form-control,
+body[data-bs-theme="dark"] .form-select{
+    background:#1e293b;
+    color:white;
+}
+
+body[data-bs-theme="dark"] .form-control::placeholder{
+    color:#cbd5e1;
+}
+
+body[data-bs-theme="dark"] .info-box,
+body[data-bs-theme="dark"] .notes-box{
+    background:#1e293b;
+    border-color:#334155;
+}
+
+body[data-bs-theme="dark"] .info-value,
+body[data-bs-theme="dark"] .profile-value{
+    color:white;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+    .sidebar{
+        width:100%;
+        height:auto;
+        position:relative;
+        border-radius:0;
+    }
+
+    .main-content{
+        margin-left:0;
+    }
+
+    .table-responsive{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:750px;
+    }
+
+    .modal-dialog{
+        margin:15px;
+    }
+}
+
+@media(max-width:576px){
+
+    .main-content{
+        padding:18px;
+    }
+
+    .sidebar-logo{
+        width:100px !important;
+        max-width:100px !important;
+    }
+
+    .table th,
+    .table td{
+        font-size:13px;
+        white-space:nowrap;
+    }
+
+    .form-select-sm,
+    .btn-sm{
+        font-size:12px;
+    }
+
+    .modal-body{
+        padding:18px;
+    }
+
+    .info-box{
+        padding:12px;
+    }
+
+    .info-title{
+        font-size:11px;
+    }
+
+    .info-value{
+        font-size:14px;
+    }
+
+    .dashboard-card,
+    .chart-card,
+    .table-card{
+        padding:18px;
+    }
+}
+
+/* =========================
+   FIX DROPDOWN ARROW
+========================= */
+
+.assignment-type{
+    appearance:auto !important;
+    -webkit-appearance:auto !important;
+    -moz-appearance:auto !important;
+
+    padding-right:2.3rem !important;
+}

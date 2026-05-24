@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Assignments</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+<style>
+
+/* =========================
+   ASSIGNMENT PAGE
+========================= */
+
+.status-select{
+
+    border-radius: 10px;
+    font-weight: 500;
+    border: none;
+
+    appearance: auto !important;
+    -webkit-appearance: auto !important;
+    -moz-appearance: auto !important;
+
+    background-position: right 12px center !important;
+    background-size: 16px 12px !important;
+
+    padding-right: 38px;
+    min-width: 145px;
+
+}
+
+.status-not-started{
+
+    background: #e5e7eb !important;
+    color: #374151 !important;
+
+}
+
+.status-in-progress{
+
+    background: #dbeafe !important;
+    color: #1d4ed8 !important;
+
+}
+
+.status-pending{
+
+    background: #fef3c7 !important;
+    color: #b45309 !important;
+
+}
+
+.status-completed{
+
+    background: #dcfce7 !important;
+    color: #15803d !important;
+
+}
+
+.status-submitted{
+
+    background: #ede9fe !important;
+    color: #7c3aed !important;
+
+}
+
+.modal-content{
+
+    border: none;
+    border-radius: 20px;
+
+}
+
+.modal-header{
+
+    padding: 20px 24px;
+
+}
+
+.modal-body{
+
+    padding: 24px;
+
+}
+
+.info-box{
+
+    background: #f8fafc;
+    border-radius: 14px;
+    padding: 14px 16px;
+    height: 100%;
+
+}
+
+.info-title{
+
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 3px;
+
+}
+
+.info-value{
+
+    font-weight: 600;
+    font-size: 15px;
+
+}
+
+.notes-box{
+
+    background: #f8fafc;
+    border-radius: 14px;
+    padding: 16px;
+    margin-top: 15px;
+
+}
+
+.notes-box p{
+
+    margin: 6px 0 0;
+    line-height: 1.6;
+    color: #4b5563;
+
+}
+
+.submission-link{
+
+    text-decoration: none;
+    font-weight: 500;
+
+}
+
+[data-bs-theme="dark"] .info-box,
+[data-bs-theme="dark"] .notes-box{
+
+    background: #374151;
+
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+    .table-responsive{
+
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+
+    }
+
+    .table{
+
+        min-width: 850px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .main-content{
+
+        padding: 14px;
+
+    }
+
+    .topbar{
+
+        padding: 16px;
+        margin-bottom: 20px;
+
+    }
+
+    .table-card{
+
+        padding: 15px;
+
+    }
+
+    .table th,
+    .table td{
+
+        font-size: 13px;
+        white-space: nowrap;
+
+    }
+
+    .form-select-sm{
+
+        font-size: 12px;
+
+    }
+
+    .btn-sm{
+
+        font-size: 12px;
+
+    }
+
+    .modal-dialog{
+
+        margin: 10px;
+
+    }
+
+    .modal-body{
+
+        padding: 18px;
+
+    }
+
+}
+
+.sidebar-logo-container{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+    margin-bottom:20px;
+}
+
+.sidebar-logo{
+    width:220px !important;
+    height:90px !important;
+    object-fit:contain;
+    display:block;
+}
+
+    
+
+</style>
+
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <div class="sidebar">
+
+        <div class="sidebar-logo-container">
+
+             <img src="images/logo.png" class="sidebar-logo">
+
+        </div>
+
+        <a href="dashboard.html">
+            <i class="bi bi-grid-fill"></i>
+            Dashboard
+        </a>
+
+        <a href="subjects.html">
+            <i class="bi bi-book-fill"></i>
+            Subjects
+        </a>
+
+        <a href="assignments.html" class="active">
+            <i class="bi bi-file-earmark-text-fill"></i>
+            Assignments
+        </a>
+
+        <a href="attendance.html">
+            <i class="bi bi-bar-chart-fill"></i>
+            Attendance
+        </a>
+
+        <a href="profile.html">
+            <i class="bi bi-person-circle"></i>
+            Profile
+        </a>
+
+        <a href="index.html">
+            <i class="bi bi-box-arrow-left"></i>
+            Logout
+        </a>
+
+    </div>
+
+    <div class="main-content">
+
+        <div class="topbar d-flex justify-content-between align-items-center shadow-sm">
+
+            <div>
+
+                <h4 class="fw-bold mb-0">
+                    Assignments
+                </h4>
+
+                <small class="text-muted">
+                    Track your academic tasks and submissions
+                </small>
+
+            </div>
+
+            <button class="dark-mode-toggle"
+                    id="darkModeToggle">
+
+                <i class="bi bi-moon-stars-fill"
+                   id="darkModeIcon"></i>
+
+            </button>
+
+        </div>
+
+        <div class="table-card shadow-sm">
+
+            <h5 class="fw-bold mb-4">
+                Assignment List
+            </h5>
+
+            <div class="table-responsive">
+
+                <table class="table align-middle">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Subject</th>
+
+                            <th>Assignment Type</th>
+
+                            <th>Weightage</th>
+
+                            <th>Submission Date</th>
+
+                            <th>Status</th>
+
+                            <th>Informations</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <!-- SUBJECT 1 -->
+
+                        <tr>
+
+                        <tr data-lecturer="Madam Hasinah">
+
+                            <td class="subject-name">
+                                IMS560 - Advance Database Management System
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm assignment-type"
+                                        onchange="changeAssignmentInfo(this)">
+
+                                    <option value="group"
+                                            selected>
+                                        Group
+                                    </option>
+
+                                    <option value="individual">
+                                        Individual
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td class="percentage">
+                                20%
+                            </td>
+
+                            <td class="due-date">
+                                25 May 2026
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm status-select"
+                                        onchange="changeStatusColor(this)">
+
+                                    <option value="not-started">
+                                        Not Started
+                                    </option>
+
+                                    <option value="in-progress"
+                                            selected>
+                                        In Progress
+                                    </option>
+
+                                    <option value="pending">
+                                        Pending
+                                    </option>
+
+                                    <option value="completed">
+                                        Completed
+                                    </option>
+
+                                    <option value="submitted">
+                                        Submitted
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td>
+
+                                <button class="btn btn-sm btn-outline-primary view-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#assignmentModal">
+
+                                    View Info
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    <!-- SUBJECT 2 -->
+
+                        <tr>
+
+                        <tr data-lecturer="Miss Nadiatul Aziz">
+
+                            <td class="subject-name">
+                                IMS562 - Information Security
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm assignment-type"
+                                        onchange="changeAssignmentInfo(this)">
+
+                                    <option value="group">
+                                        Group
+                                    </option>
+
+                                    <option value="individual"
+                                            selected>
+                                        Individual
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td class="percentage">
+                                15%
+                            </td>
+
+                            <td class="due-date">
+                                28 May 2026
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm status-select"
+                                        onchange="changeStatusColor(this)">
+
+                                    <option value="not-started">
+                                        Not Started
+                                    </option>
+
+                                    <option value="in-progress">
+                                        In Progress
+                                    </option>
+
+                                    <option value="pending"
+                                            selected>
+                                        Pending
+                                    </option>
+
+                                    <option value="completed">
+                                        Completed
+                                    </option>
+
+                                    <option value="submitted">
+                                        Submitted
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td>
+
+                                <button class="btn btn-sm btn-outline-primary view-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#assignmentModal">
+
+                                    View Info
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                        <!-- SUBJECT 3 -->
+
+                        <tr>
+
+                        <tr data-lecturer="Dr Norizan Anwar">
+
+                            <td class="subject-name">
+                                IMS564 - User Experience Design
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm assignment-type"
+                                        onchange="changeAssignmentInfo(this)">
+
+                                    <option value="group"
+                                            selected>
+                                        Group
+                                    </option>
+
+                                    <option value="individual">
+                                        Individual
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td class="percentage">
+                                20%
+                            </td>
+
+                            <td class="due-date">
+                                25 May 2026
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm status-select"
+                                        onchange="changeStatusColor(this)">
+
+                                    <option value="not-started">
+                                        Not Started
+                                    </option>
+
+                                    <option value="in-progress"
+                                            selected>
+                                        In Progress
+                                    </option>
+
+                                    <option value="pending">
+                                        Pending
+                                    </option>
+
+                                    <option value="completed">
+                                        Completed
+                                    </option>
+
+                                    <option value="submitted">
+                                        Submitted
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td>
+
+                                <button class="btn btn-sm btn-outline-primary view-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#assignmentModal">
+
+                                    View Info
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                        <!-- SUBJECT 4 -->
+
+                        <tr>
+
+                        <tr data-lecturer="Sir Khairul Mizan">
+
+                            <td class="subject-name">
+                                IMS565 - Information Systems Project Management
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm assignment-type"
+                                        onchange="changeAssignmentInfo(this)">
+
+                                    <option value="group">
+                                        Group
+                                    </option>
+
+                                    <option value="individual"
+                                            selected>
+                                        Individual
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td class="percentage">
+                                15%
+                            </td>
+
+                            <td class="due-date">
+                                28 May 2026
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm status-select"
+                                        onchange="changeStatusColor(this)">
+
+                                    <option value="not-started">
+                                        Not Started
+                                    </option>
+
+                                    <option value="in-progress">
+                                        In Progress
+                                    </option>
+
+                                    <option value="pending"
+                                            selected>
+                                        Pending
+                                    </option>
+
+                                    <option value="completed">
+                                        Completed
+                                    </option>
+
+                                    <option value="submitted">
+                                        Submitted
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td>
+
+                                <button class="btn btn-sm btn-outline-primary view-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#assignmentModal">
+
+                                    View Info
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                        <!-- SUBJECT 5 -->
+
+                        <tr>
+
+                        <tr data-lecturer="Dr Asyraf Wahi Anuar">
+
+                            <td class="subject-name">
+                                IMS566 - Advanced Web Design Development and Content Management
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm assignment-type"
+                                        onchange="changeAssignmentInfo(this)">
+
+                                    <option value="group"
+                                            selected>
+                                        Group
+                                    </option>
+
+                                    <option value="individual">
+                                        Individual
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td class="percentage">
+                                20%
+                            </td>
+
+                            <td class="due-date">
+                                25 May 2026
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm status-select"
+                                        onchange="changeStatusColor(this)">
+
+                                    <option value="not-started">
+                                        Not Started
+                                    </option>
+
+                                    <option value="in-progress">
+                                        In Progress
+                                    </option>
+
+                                    <option value="pending">
+                                        Pending
+                                    </option>
+
+                                    <option value="completed"
+                                            selected>
+                                        Completed
+                                    </option>
+
+                                    <option value="submitted">
+                                        Submitted
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td>
+
+                                <button class="btn btn-sm btn-outline-primary view-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#assignmentModal">
+
+                                    View Info
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+
+                        <!-- SUBJECT 6 -->
+
+                        <tr>
+
+                        <tr data-lecturer="Laoshi Hong Wei San">
+
+                            <td class="subject-name">
+                                TMC501 - EIntroductory Mandarin (III)
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm assignment-type"
+                                        onchange="changeAssignmentInfo(this)">
+
+                                    <option value="group">
+                                        Group
+                                    </option>
+
+                                    <option value="individual"
+                                            selected>
+                                        Individual
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td class="percentage">
+                                15%
+                            </td>
+
+                            <td class="due-date">
+                                28 May 2026
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm status-select"
+                                        onchange="changeStatusColor(this)">
+
+                                    <option value="not-started">
+                                        Not Started
+                                    </option>
+
+                                    <option value="in-progress">
+                                        In Progress
+                                    </option>
+
+                                    <option value="pending">
+                                        Pending
+                                    </option>
+
+                                    <option value="completed"
+                                            selected>
+                                        Completed
+                                    </option>
+
+                                    <option value="submitted">
+                                        Submitted
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td>
+
+                                <button class="btn btn-sm btn-outline-primary view-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#assignmentModal">
+
+                                    View Info
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                        <!-- SUBJECT 7 -->
+
+                        <tr data-lecturer="Madam Munirah">
+
+                            <td class="subject-name">
+                                LCC501 - English for Professional Correspondence
+                            <td>
+
+                                <select class="form-select form-select-sm assignment-type"
+                                        onchange="changeAssignmentInfo(this)">
+
+                                    <option value="group"
+                                            selected>
+                                        Group
+                                    </option>
+
+                                    <option value="individual">
+                                        Individual
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td class="percentage">
+                                20%
+                            </td>
+
+                            <td class="due-date">
+                                25 May 2026
+                            </td>
+
+                            <td>
+
+                                <select class="form-select form-select-sm status-select"
+                                        onchange="changeStatusColor(this)">
+
+                                    <option value="not-started">
+                                        Not Started
+                                    </option>
+
+                                    <option value="in-progress">
+                                        In Progress
+                                    </option>
+
+                                    <option value="pending"
+                                            selected>
+                                        Pending
+                                    </option>
+
+                                    <option value="completed">
+                                        Completed
+                                    </option>
+
+                                    <option value="submitted">
+                                        Submitted
+                                    </option>
+
+                                </select>
+
+                            </td>
+
+                            <td>
+
+                                <button class="btn btn-sm btn-outline-primary view-btn"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#assignmentModal">
+
+                                    View Info
+
+                                </button>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- MODAL -->
+
+    <div class="modal fade"
+         id="assignmentModal"
+         tabindex="-1">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+
+            <div class="modal-content">
+
+                <div class="modal-header border-0">
+
+                    <h5 class="modal-title fw-bold">
+                        Assignment Details
+                    </h5>
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal">
+                    </button>
+
+                </div>
+
+                <div class="modal-body pt-0">
+
+                    <div class="row g-3">
+
+    <div class="col-md-6">
+        <div class="info-box">
+            <div class="info-title">Subject</div>
+            <div class="info-value" id="modalSubject">IMS564</div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="info-box">
+            <div class="info-title">Assignment Type</div>
+            <div class="info-value" id="assignmentTypeText">Group Assignment</div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="info-box">
+            <div class="info-title">Percentage</div>
+            <div class="info-value" id="modalPercentage">20%</div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="info-box">
+            <div class="info-title">Due Date</div>
+            <div class="info-value" id="modalDueDate">25 May 2026</div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="info-box">
+            <div class="info-title">
+    Lecturer
+</div>
+
+<div class="info-value"
+     id="modalLecturer">
+    Lecturer Name
+</div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="info-box">
+            <div class="info-title">Submission Link</div>
+            <div class="info-value">
+                <a href="https://drive.google.com/drive/folders/1lUnHeU_xJreMopz1FlIzKYC2Oas0WV3J" class="submission-link">Open Link</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+                    <div class="notes-box">
+
+                        <strong>
+                            Notes
+                        </strong>
+
+                        <p>
+
+                            Complete all assignment requirements before the due date and upload the final version through the submission portal.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+
+    const darkModeToggle =
+        document.getElementById('darkModeToggle');
+
+    const darkModeIcon =
+        document.getElementById('darkModeIcon');
+
+    const body =
+        document.body;
+
+    // =========================
+    // LOAD SAVED THEME
+    // =========================
+
+    const savedTheme =
+        localStorage.getItem('theme') || 'light';
+
+    body.setAttribute(
+        'data-bs-theme',
+        savedTheme
+    );
+
+    updateIcon(savedTheme);
+
+    // =========================
+    // TOGGLE DARK MODE
+    // =========================
+
+    darkModeToggle.addEventListener('click', () => {
+
+        const currentTheme =
+            body.getAttribute('data-bs-theme');
+
+        const newTheme =
+            currentTheme === 'dark'
+            ? 'light'
+            : 'dark';
+
+        body.setAttribute(
+            'data-bs-theme',
+            newTheme
+        );
+
+        localStorage.setItem(
+            'theme',
+            newTheme
+        );
+
+        updateIcon(newTheme);
+
+    });
+
+    // =========================
+    // UPDATE ICON
+    // =========================
+
+    function updateIcon(theme){
+
+        if(theme === 'dark'){
+
+            darkModeIcon.className =
+                'bi bi-sun-fill';
+
+        } else {
+
+            darkModeIcon.className =
+                'bi bi-moon-stars-fill';
+
+        }
+
+    }
+
+        const assignmentRules = {
+
+            group: {
+
+                percentage: '20%',
+
+                dueDate: '25 May 2026',
+
+                typeText: 'Group Assignment'
+
+            },
+
+            individual: {
+
+                percentage: '15%',
+
+                dueDate: '28 May 2026',
+
+                typeText: 'Individual Assignment'
+
+            }
+
+        };
+
+        const assignmentState = {};
+
+        function changeAssignmentInfo(select){
+
+            const row =
+                select.closest('tr');
+
+            const rowIndex =
+                row.rowIndex;
+
+            const type =
+                select.value;
+
+            const data =
+                assignmentRules[type];
+
+            row.querySelector('.percentage').innerText =
+                data.percentage;
+
+            row.querySelector('.due-date').innerText =
+                data.dueDate;
+
+            if(!assignmentState[rowIndex]){
+
+                assignmentState[rowIndex] = {
+
+                    group: 'in-progress',
+
+                    individual: 'pending'
+
+                };
+
+            }
+
+            const savedStatus =
+                assignmentState[rowIndex][type];
+
+            const statusSelect =
+                row.querySelector('.status-select');
+
+            statusSelect.value =
+                savedStatus;
+
+            changeStatusColor(statusSelect);
+
+        }
+
+        function changeStatusColor(select){
+
+            select.classList.remove(
+                'status-not-started',
+                'status-in-progress',
+                'status-pending',
+                'status-completed',
+                'status-submitted'
+            );
+
+            const value =
+                select.value;
+
+            if(value === 'not-started'){
+
+                select.classList.add('status-not-started');
+
+            }
+
+            else if(value === 'in-progress'){
+
+                select.classList.add('status-in-progress');
+
+            }
+
+            else if(value === 'pending'){
+
+                select.classList.add('status-pending');
+
+            }
+
+            else if(value === 'completed'){
+
+                select.classList.add('status-completed');
+
+            }
+
+            else if(value === 'submitted'){
+
+                select.classList.add('status-submitted');
+
+            }
+
+            const row =
+                select.closest('tr');
+
+            const rowIndex =
+                row.rowIndex;
+
+            const type =
+                row.querySelector('.assignment-type').value;
+
+            if(!assignmentState[rowIndex]){
+
+                assignmentState[rowIndex] = {};
+
+            }
+
+            assignmentState[rowIndex][type] =
+                value;
+
+        }
+
+        document.querySelectorAll('.status-select')
+            .forEach(select => {
+
+                changeStatusColor(select);
+
+            });
+
+        const viewButtons =
+            document.querySelectorAll('.view-btn');
+
+        viewButtons.forEach(button => {
+
+            button.addEventListener('click', function(){
+
+                const row =
+                    this.closest('tr');
+
+                const subject =
+                    row.querySelector('.subject-name').innerText;
+
+                const type =
+                    row.querySelector('.assignment-type').value;
+
+                const percentage =
+                    row.querySelector('.percentage').innerText;
+
+                const dueDate =
+                    row.querySelector('.due-date').innerText;
+
+                const lecturer =
+                    row.dataset.lecturer;
+
+                const data =
+                    assignmentRules[type];
+
+                document.getElementById('modalSubject').innerText =
+                    subject;
+
+                document.getElementById('assignmentTypeText').innerText =
+                    data.typeText;
+
+                document.getElementById('modalPercentage').innerText =
+                    percentage;
+
+                document.getElementById('modalDueDate').innerText =
+                    dueDate;
+
+                document.getElementById('modalLecturer').innerText =
+                    lecturer;
+
+            });
+
+        });
+
+    </script>
+
+<script>
+
+    let assignments = [
+
+        {
+            task: "Web Design Project",
+            status: "Pending"
+        },
+
+        {
+            task: "Database Report",
+            status: "Completed"
+        },
+
+        {
+            task: "UI Presentation",
+            status: "Pending"
+        },
+
+        {
+            task: "IMS566 Proposal",
+            status: "Pending"
+        }
+
+    ];
+
+    localStorage.setItem(
+        'assignments',
+        JSON.stringify(assignments)
+    );
+
+</script>
+
+</body>
+</html>
